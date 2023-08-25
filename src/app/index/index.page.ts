@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular';
+import { AnimationController, IonCard } from '@ionic/angular';
 
 
 
@@ -10,21 +13,40 @@ import { AlertController } from '@ionic/angular';
 })
 export class IndexPage implements OnInit {
 
+
+  
   
   mostrarSelectorDeFecha: boolean = false;
+  @ViewChild(IonCard, { read: ElementRef }) card!: ElementRef<HTMLIonCardElement>;
+
+  private animation: Animation;
+
+  
+
+  
+  
+
+  
 
   // Propiedades para almacenar los valores ingresados en los campos
   nombre: string;
   apellido: string;
   nivelEducacional: string;
   fechaNacimiento: string;
+  
 
-  constructor(private alertController: AlertController) {
-    this.nombre = '';
+  constructor(private alertController: AlertController,
+    private animationCtrl: AnimationController) {
+  this.nombre = '';
   this.apellido = '';
   this.nivelEducacional = '';
   this.fechaNacimiento = '';
+
+  
+  this.animation = this.animationCtrl.create();
    }
+  
+  
 
   ngOnInit() {
   }
@@ -57,5 +79,27 @@ export class IndexPage implements OnInit {
     await alert.present();
   }
   
+  ngAfterViewInit() {
+    this.animation = this.animationCtrl
+      .create()
+      .addElement(this.card.nativeElement)
+      .duration(1500)
+      .iterations(Infinity)
+      .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+      .fromTo('opacity', '1', '0.2');
+  }
+
+  play() {
+    this.animation.play();
+  }
+
+  pause() {
+    this.animation.pause();
+  }
+
+  stop() {
+    this.animation.stop();
+  }
   
 }
+
