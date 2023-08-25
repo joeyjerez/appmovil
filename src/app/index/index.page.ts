@@ -87,19 +87,10 @@ export class IndexPage implements OnInit {
       .iterations(Infinity)
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
       .fromTo('opacity', '1', '0.2');
+      this.animation.play();
   }
 
-  play() {
-    this.animation.play();
-  }
-
-  pause() {
-    this.animation.pause();
-  }
-
-  stop() {
-    this.animation.stop();
-  }
+  
   
 }
 
