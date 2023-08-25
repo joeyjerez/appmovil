@@ -1,24 +1,62 @@
-<ion-content>
-  <div class="login-section ion-padding">
-    <div class="heading ion-padding">
-      <h1>¡Página de Feed del hacker!</h1>
-      <p>Tu camino comienza aquí</p>
-    </div>
-    
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SkeletonApp</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-card>
-      <img src="assets/hacker.jpeg" />
-      <ion-card-header>
-        <ion-card-title>Planes de acción</ion-card-title>
-        <ion-card-subtitle>Nuevo contenido</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content>
-        En este apartado se podrán visualizar tus próximas tareas.
-      </ion-card-content>
-    </ion-card>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <br>
+  <h1>Bienvenido</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input class="nom-bre" placeholder="Ingrese Nombre"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input placeholder="Ingrese Apellido"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-select label="Nivel Educacional" placeholder="Seleccione">
+        <ion-select-option value="apple">Básica Completa</ion-select-option>
+        <ion-select-option value="banana">Media Completa</ion-select-option>
+        <ion-select-option value="orange">Educación Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
 
-  </div>
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-icon
+        name="calendar-number-outline"
+        slot="end"
+        (click)="abrirSelectorDeFecha()"
+        class="calendar-icon"
+      ></ion-icon>
+      <!-- Agrega un elemento div para posicionar el selector de fecha -->
+      <div class="calendar-overlay" *ngIf="mostrarSelectorDeFecha">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  
 </ion-content>
 
+<ion-button color="danger" (click)="limpiarCampos()">Limpiar</ion-button>
+<ion-button color="danger" (click)="mostrarDatos()">Mostrar</ion-button>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>App de Joeyblinker</ion-title>
+  </ion-toolbar>
+</ion-footer>

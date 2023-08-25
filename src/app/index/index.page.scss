@@ -1,17 +1,20 @@
-ion-content{
-    --background: linear-gradient(0deg,rgba(0,0,0,0.7), rgba(0,0,0,0.1)),
-    url("/assets/programador.jpg") no-repeat center center /cover;
-}
 
-.heading{
-    margin-top: 20px;
-    h1{
-        font-size: 1.6rem;
-        font-weight: bolder;
-    }
-    p{
-        margin-top: 20px;
-        font-size: 1rem;
-        color: #7b7b7b;
-    }
-}
+
+/* Estilo para posicionar el icono de calendario */
+.calendar-icon {
+    cursor: pointer;
+  }
+  
+  /* Estilo para el selector de fecha superpuesto */
+  .calendar-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
